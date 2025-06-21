@@ -1,0 +1,24 @@
+2025-06-19 11:39:43,192 | INFO | User: demo | Action: Summarize | Meta: Example_Research_Paper.pdf
+2025-06-19 11:39:43,211 | INFO | Found credentials in shared credentials file: ~/.aws/credentials
+2025-06-19 12:54:44,460 | INFO | User: demo | Action: Summarize | Meta: Example_Research_Paper.pdf
+2025-06-19 12:56:24,415 | INFO | User: demo | Action: Summarize | Meta: Example_Research_Paper.pdf
+2025-06-19 12:56:24,429 | INFO | Found credentials in shared credentials file: ~/.aws/credentials
+2025-06-19 13:05:51,398 | INFO | User: demo | Action: Summarize | Meta: Example_Research_Paper.pdf
+2025-06-19 13:05:51,413 | INFO | Found credentials in shared credentials file: ~/.aws/credentials
+2025-06-19 13:07:44,862 | INFO | User: demo | Action: Summarize | Meta: Example_Research_Paper.pdf
+2025-06-19 13:07:44,883 | INFO | Found credentials in shared credentials file: ~/.aws/credentials
+2025-06-19 13:09:41,729 | INFO | User: demo | Action: Summarize | Meta: Example_Research_Paper.pdf
+2025-06-19 13:09:41,745 | INFO | Found credentials in shared credentials file: ~/.aws/credentials
+2025-06-19 14:13:34,349 | INFO | User: demo | Action: Summarize | Meta: Example_Research_Paper.pdf
+2025-06-19 14:13:34,363 | INFO | Found credentials in shared credentials file: ~/.aws/credentials
+2025-06-19 14:14:42,074 | INFO | User: demo | Action: Summarize | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-19 14:18:35,157 | INFO | User: demo | Action: Summarize | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-19 14:18:35,171 | INFO | Found credentials in shared credentials file: ~/.aws/credentials
+2025-06-19 14:20:38,086 | INFO | User: demo | Action: Summarize | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-19 14:20:38,101 | INFO | Found credentials in shared credentials file: ~/.aws/credentials
+2025-06-19 14:20:58,062 | INFO | User: demo | Action: Summarize | Meta: Example_Research_Paper.pdf
+2025-06-19 14:21:39,483 | INFO | User: demo | Action: Summarize | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-19 14:21:48,762 | INFO | User: demo | Action: Summarize | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-19 14:22:48,785 | INFO | User: demo | Action: Summarize | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-19 14:27:28,850 | INFO | User: demo | Action: Summarize | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-19 14:29:10,865 | INFO | User: demo | Action: Summarize | Meta: FULLTEXT01.pdf

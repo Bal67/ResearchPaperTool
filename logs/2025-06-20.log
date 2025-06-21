@@ -1,0 +1,4 @@
+2025-06-20 14:05:52,499 | INFO | User: demo | Action: Summarize | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 14:05:52,639 | INFO | Found credentials in shared credentials file: ~/.aws/credentials
+2025-06-20 14:06:23,126 | INFO | User: demo | Action: Summarize | Meta: FULLTEXT01.pdf
+2025-06-20 14:06:26,295 | INFO | User: demo | Action: Summarize | Meta: FULLTEXT01.pdf
