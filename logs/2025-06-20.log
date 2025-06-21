@@ -137,3 +137,27 @@
 2025-06-20 22:21:56,269 | INFO | User: Sally | Action: Hybrid Q&A | Meta: Who is the author?
 2025-06-20 22:22:15,452 | INFO | User: Sally | Action: Summary | Meta: FULLTEXT01.pdf
 2025-06-20 22:22:18,396 | INFO | User: Sally | Action: Hybrid Q&A | Meta: What is the name of the paper?
+2025-06-20 22:28:42,758 | INFO | User: Thomas | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:28:53,298 | INFO | User: Thomas | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:28:54,186 | INFO | User: Thomas | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:28:58,577 | INFO | User: Thomas | Action: Section Summary | Meta: introduction
+2025-06-20 22:29:06,565 | INFO | User: Thomas | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:29:09,621 | INFO | User: Thomas | Action: Hybrid Q&A | Meta: Who is the author?
+2025-06-20 22:29:18,415 | INFO | User: Thomas | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:29:21,311 | INFO | User: Thomas | Action: Hybrid Q&A | Meta: What is the paper name?
+2025-06-20 22:29:23,875 | INFO | User: Thomas | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:29:31,944 | INFO | User: Thomas | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:29:36,809 | INFO | User: Thomas | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:31:09,448 | INFO | User: Phil | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:31:18,433 | INFO | User: Phil | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:31:19,297 | INFO | User: Phil | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:31:25,627 | INFO | User: Phil | Action: Section Summary | Meta: methodology
+2025-06-20 22:31:31,864 | INFO | User: Phil | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:31:34,590 | INFO | User: Phil | Action: Hybrid Q&A | Meta: What is the paper name?
+2025-06-20 22:31:40,350 | INFO | User: Phil | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:31:43,137 | INFO | User: Phil | Action: Hybrid Q&A | Meta: Who is the author?
+2025-06-20 22:31:50,071 | INFO | User: Phil | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:32:07,408 | INFO | User: Phil | Action: Summary | Meta: Example_Research_Paper.pdf
+2025-06-20 22:32:16,712 | INFO | User: Phil | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:32:16,985 | INFO | User: Phil | Action: Summary | Meta: Example_Research_Paper.pdf
+2025-06-20 22:32:31,879 | INFO | User: Phil | Action: Comparison | Meta: 2 papers
