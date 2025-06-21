@@ -1,10 +1,11 @@
 import streamlit as st
 import hashlib
 
-REQUIRED_API_KEY = "open-access-2025"
+REQUIRED_API_KEY = "open-2025"
 
 USER_CREDENTIALS = {
-    "user": hashlib.sha256("user123".encode()).hexdigest()
+    "demo": hashlib.sha256("demo123".encode()).hexdigest(),
+    "admin": hashlib.sha256("adminpass".encode()).hexdigest()
 }
 
 def login():
@@ -12,8 +13,9 @@ def login():
         st.session_state.api_valid = False
     if "auth" not in st.session_state:
         st.session_state.auth = False
+    if "username" not in st.session_state:
+        st.session_state.username = None
 
-    # API Key validation
     if not st.session_state.api_valid:
         st.title("Enter API Key")
         api_input = st.text_input("API Key", type="password")
@@ -26,7 +28,6 @@ def login():
                 st.error("Invalid API key.")
         st.stop()
 
-    # Authentication
     if not st.session_state.auth:
         st.title("Login")
         username = st.text_input("Username")
@@ -36,8 +37,19 @@ def login():
             hashed_pw = hashlib.sha256(password.encode()).hexdigest()
             if USER_CREDENTIALS.get(username) == hashed_pw:
                 st.session_state.auth = True
-                st.success("Logged in successfully.")
+                st.session_state.username = username
+                st.success("Logged in.")
                 st.rerun()
             else:
                 st.error("Invalid credentials.")
+        st.stop()
+
+    if st.session_state.username and "display_name" not in st.session_state:
+        st.title("Welcome")
+        name = st.text_input("What name would you like to use in this session?")
+        if st.button("Continue"):
+            if name.strip():
+                st.session_state.display_name = name.strip()
+                st.success(f"Hello, {st.session_state.display_name}!")
+                st.rerun()
         st.stop()
