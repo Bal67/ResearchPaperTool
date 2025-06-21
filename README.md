@@ -1,4 +1,4 @@
-# 📚 ResearchPaperTool
+# ResearchPaperTool
 
 An AI-powered research paper assistant that helps users:
 - Upload and summarize scientific PDFs
@@ -7,21 +7,26 @@ An AI-powered research paper assistant that helps users:
 - Compare summaries across multiple documents
 - Monitor admin activity securely
 
-Powered by [Amazon Bedrock](https://aws.amazon.com/bedrock/) and [Anthropic Claude](https://www.anthropic.com/index/claude), wrapped in a clean [Streamlit](https://streamlit.io/) interface.
+Powered by [Amazon Bedrock](https://aws.amazon.com/bedrock/) and [Anthropic Claude](https://www.anthropic.com/index/claude) with [Streamlit](https://streamlit.io/) interface.
+___
+## Demo
+
+https://github.com/user-attachments/assets/38a7fb83-2475-4664-9c10-4b0a1ab43588
+
 
 ---
 
-## 🔍 Features
+## Features
 
-- 📄 **Full-paper Summarization**: Upload any research PDF and instantly get a plain-English summary.
-- 🧠 **Section-based Summarization**: Select specific sections like "Methods" or "Results" to summarize independently.
-- ❓ **Ask Questions**: Ask Claude anything about your uploaded paper with context-aware memory.
-- 📊 **Compare Multiple Papers**: Upload several documents and compare their summaries side-by-side.
-- 🔒 **Admin Mode**: View user logs and monitor app usage with a password-protected panel.
+- **Full-paper Summarization**: Upload any research PDF and instantly get a plain-English summary.
+- **Section-based Summarization**: Select specific sections like "Methods" or "Results" to summarize independently.
+- **Ask Questions**: Ask Claude anything about your uploaded paper with context-aware memory.
+- **Compare Multiple Papers**: Upload several documents and compare their summaries side-by-side.
+- **Admin Mode**: View user logs and monitor app usage with a password-protected panel.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 ```bash
@@ -52,7 +57,7 @@ Claude via Bedrock is accessed using `boto3` (no API key required).
 
 ---
 
-## 🧪 Running Locally
+## Running Locally
 
 ```bash
 streamlit run app.py
@@ -60,16 +65,8 @@ streamlit run app.py
 
 ---
 
-## ☁️ Deployment (Streamlit Cloud)
 
-To deploy:
-1. Push your repo to GitHub (remove `.streamlit/secrets.toml` from the repo!)
-2. Go to [Streamlit Cloud](https://streamlit.io/cloud)
-3. Paste secrets into **App > Settings > Secrets** (same format as `.toml`)
-
----
-
-## 🧪 Testing & Coverage
+## Testing & Coverage
 
 Run all tests:
 ```bash
@@ -84,7 +81,7 @@ coverage html
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ResearchPaperTool/
@@ -105,7 +102,7 @@ ResearchPaperTool/
 
 ---
 
-## 🔐 Security Notes
+## Security Notes
 
 - Admin logs are protected by a password prompt
 - Do **not** commit credentials or `.streamlit/secrets.toml` to version control
@@ -113,6 +110,6 @@ ResearchPaperTool/
 
 ---
 
-## 📬 Contact
+## Contact
 
 Created by [@Bal67](https://github.com/Bal67). PRs and feedback welcome.
