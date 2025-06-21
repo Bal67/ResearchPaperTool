@@ -1,4 +1,4 @@
-# 📄 Technical Documentation
+# Project Documentation
 
 ## Architecture Overview
 - **Frontend**: Streamlit app (Python)
@@ -28,7 +28,7 @@ ResearchPaperTool/
 
 ---
 
-# 🔌 API Documentation
+# API Documentation
 
 ### Claude Prompting API
 - **Function**: `call_claude(prompt: str) -> str`
@@ -50,7 +50,7 @@ ResearchPaperTool/
 
 ---
 
-# 🚀 Deployment Guide
+# Deployment Guide
 
 ## 1. Local
 ```bash
@@ -73,7 +73,7 @@ ADMIN_PASSWORD = "your_admin_password"
 
 ---
 
-# 👩‍💻 User Manual
+# User Manual
 
 ## Step 1: Login
 - Enter username and password
@@ -93,7 +93,7 @@ ADMIN_PASSWORD = "your_admin_password"
 
 ---
 
-# 🔐 Security & Responsibility
+# Security & Responsibility
 
 ## Security Measures
 - Secrets stored via Streamlit’s built-in secrets manager
