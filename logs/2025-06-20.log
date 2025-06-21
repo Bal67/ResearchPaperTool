@@ -61,3 +61,79 @@
 2025-06-20 21:31:37,751 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
 2025-06-20 21:31:39,649 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
 2025-06-20 21:31:40,127 | ERROR | User: Jill | Error in: Hybrid Q&A | Exception: An error occurred (ValidationException) when calling the InvokeModel operation: Malformed input request: #: subject must not be valid against schema {"required":["messages"]}#/messages/0/role: system is not a valid enum value, please reformat your input and try again.
+2025-06-20 21:57:19,986 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:57:29,682 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:57:29,901 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:57:30,345 | ERROR | User: Sally | Error in: Hybrid Q&A | Exception: An error occurred (ValidationException) when calling the InvokeModel operation: Malformed input request: #: subject must not be valid against schema {"required":["messages"]}#/messages/0/role: system is not a valid enum value, please reformat your input and try again.
+2025-06-20 21:58:35,939 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:58:40,004 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:58:40,187 | ERROR | User: Sally | Error in: Hybrid Q&A | Exception: Full paper text is empty or not found.
+2025-06-20 21:58:48,540 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:58:53,438 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:58:53,619 | ERROR | User: Sally | Error in: Hybrid Q&A | Exception: Full paper text is empty or not found.
+2025-06-20 21:59:45,340 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:59:49,939 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:59:50,538 | ERROR | User: Sally | Error in: Hybrid Q&A | Exception: An error occurred (ValidationException) when calling the InvokeModel operation: Malformed input request: #: subject must not be valid against schema {"required":["messages"]}#/messages/0/role: system is not a valid enum value, please reformat your input and try again.
+2025-06-20 22:00:46,409 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:00:51,584 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:00:51,766 | ERROR | User: Sally | Error in: Hybrid Q&A | Exception: call_claude() got an unexpected keyword argument 'raw'
+2025-06-20 22:01:43,249 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:01:47,818 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:01:48,263 | ERROR | User: Sally | Error in: Hybrid Q&A | Exception: An error occurred (ValidationException) when calling the InvokeModel operation: Malformed input request: #: subject must not be valid against schema {"required":["messages"]}#/messages/0/content: expected type: String, found: JSONObject#/messages/0/content: expected type: JSONArray, found: JSONObject, please reformat your input and try again.
+2025-06-20 22:02:47,471 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:02:50,795 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:02:53,073 | INFO | User: Sally | Action: Hybrid Q&A | Meta: What is the paper name?
+2025-06-20 22:03:04,886 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:03:05,098 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:03:06,487 | INFO | User: Sally | Action: Hybrid Q&A | Meta: What is the name of the paper?
+2025-06-20 22:04:04,832 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:04:07,087 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:04:07,539 | ERROR | User: Sally | Error in: Hybrid Q&A | Exception: An error occurred (ValidationException) when calling the InvokeModel operation: Malformed input request: #: subject must not be valid against schema {"required":["messages"]}#/messages/0/content: expected type: String, found: JSONObject#/messages/0/content: expected type: JSONArray, found: JSONObject, please reformat your input and try again.
+2025-06-20 22:04:21,843 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:04:27,130 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:04:27,313 | ERROR | User: Sally | Error in: Hybrid Q&A | Exception: call_claude() got an unexpected keyword argument 'raw'
+2025-06-20 22:04:44,837 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:04:51,178 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:04:53,675 | INFO | User: Sally | Action: Hybrid Q&A | Meta: What is the name of the paper?
+2025-06-20 22:06:49,309 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:06:52,192 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:06:54,459 | INFO | User: Sally | Action: Hybrid Q&A | Meta: What is the name of the paper?
+2025-06-20 22:07:02,504 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:07:02,716 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:07:06,605 | INFO | User: Sally | Action: Hybrid Q&A | Meta: Who is the author?
+2025-06-20 22:07:25,498 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:07:30,008 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:07:32,845 | INFO | User: Sally | Action: Hybrid Q&A | Meta: Who is the author?
+2025-06-20 22:07:54,106 | INFO | User: Sally | Action: Summary | Meta: Example_Research_Paper.pdf
+2025-06-20 22:08:01,740 | INFO | User: Sally | Action: Summary | Meta: Example_Research_Paper.pdf
+2025-06-20 22:08:02,589 | INFO | User: Sally | Action: Summary | Meta: Example_Research_Paper.pdf
+2025-06-20 22:08:20,827 | INFO | User: Sally | Action: Section Summary | Meta: references
+2025-06-20 22:08:30,776 | INFO | User: Sally | Action: Summary | Meta: Example_Research_Paper.pdf
+2025-06-20 22:08:31,318 | INFO | User: Sally | Action: Summary | Meta: Example_Research_Paper.pdf
+2025-06-20 22:08:37,691 | INFO | User: Sally | Action: Hybrid Q&A | Meta: Who is the author?
+2025-06-20 22:08:50,055 | INFO | User: Sally | Action: Summary | Meta: Example_Research_Paper.pdf
+2025-06-20 22:08:52,599 | INFO | User: Sally | Action: Hybrid Q&A | Meta: What is the name of the paper?
+2025-06-20 22:10:12,977 | INFO | User: Sally | Action: Summary | Meta: Example_Research_Paper.pdf
+2025-06-20 22:10:16,413 | INFO | User: Sally | Action: Summary | Meta: Example_Research_Paper.pdf
+2025-06-20 22:10:22,892 | INFO | User: Sally | Action: Hybrid Q&A | Meta: What is the name of the paper?
+2025-06-20 22:10:47,990 | INFO | User: Sally | Action: Summary | Meta: Example_Research_Paper.pdf
+2025-06-20 22:10:53,917 | INFO | User: Sally | Action: Hybrid Q&A | Meta: What drug was used in the trials?
+2025-06-20 22:11:17,334 | INFO | User: Sally | Action: Summary | Meta: Example_Research_Paper.pdf
+2025-06-20 22:11:17,426 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:11:28,548 | INFO | User: Sally | Action: Summary | Meta: Example_Research_Paper.pdf
+2025-06-20 22:11:28,636 | INFO | User: Sally | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 22:11:42,899 | INFO | User: Sally | Action: Comparison | Meta: 2 papers
+2025-06-20 22:12:10,011 | INFO | User: Sally | Action: Summary | Meta: Example_Research_Paper.pdf
+2025-06-20 22:16:02,759 | INFO | User: Sally | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:16:41,649 | INFO | User: Sally | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:16:53,630 | INFO | User: Sally | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:16:56,200 | INFO | User: Sally | Action: Hybrid Q&A | Meta: What is the name of the paper?
+2025-06-20 22:19:57,127 | INFO | User: Sally | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:20:11,907 | INFO | User: Sally | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:20:15,534 | INFO | User: Sally | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:20:15,877 | ERROR | User: Sally | Error in: Hybrid Q&A | Exception: name 'split_into_chunks' is not defined
+2025-06-20 22:21:46,147 | INFO | User: Sally | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:21:51,334 | INFO | User: Sally | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:21:56,269 | INFO | User: Sally | Action: Hybrid Q&A | Meta: Who is the author?
+2025-06-20 22:22:15,452 | INFO | User: Sally | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 22:22:18,396 | INFO | User: Sally | Action: Hybrid Q&A | Meta: What is the name of the paper?

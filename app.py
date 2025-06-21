@@ -1,121 +1,131 @@
 import streamlit as st
 from app.auth import login
-from app.monitoring import log_event, log_error
-from app.bedrock_client import call_claude
 from app.pdf_parser import parse_uploaded_pdf
+from app.bedrock_client import call_claude
+from app.monitoring import log_event, log_error
+from app.comparison import summarize_paper, compare_summaries
 from app.qna import (
-    find_relevant_chunk,
-    split_into_chunks,
     init_qa_memory,
     ask_question_with_memory,
     add_to_qa_memory,
 )
-from app.comparison import summarize_paper, compare_summaries
 from app.admin_logs import show_admin_logs
 
-st.set_page_config(page_title="Research Paper Tool", layout="wide")
 
-if "authenticated" not in st.session_state:
-    st.session_state.authenticated = False
+login()
+st.title("📚 Research Paper Summarizer")
 
-if not st.session_state.authenticated:
-    login()
-    st.stop()
-
-if "display_name" not in st.session_state:
-    st.session_state.display_name = st.text_input("Enter your name:")
-    if not st.session_state.display_name:
-        st.stop()
-
+display_name = st.session_state.get("display_name", "User")
 init_qa_memory()
 
-display_name = st.session_state.display_name
+uploaded_files = st.file_uploader(
+    "Upload one or more research papers (PDF)", type="pdf", accept_multiple_files=True
+)
 
-st.title("Research Paper Tool")
+if uploaded_files:
+    summaries = {}
+    for file in uploaded_files:
+        try:
+            file.seek(0)
+            doc = parse_uploaded_pdf(file)
+            full_text = "\n".join(doc.sections.values())
+            summary_key = f"summary_{file.name}"
 
-uploaded_file = st.file_uploader("Upload a research paper (PDF)", type="pdf")
-if uploaded_file:
-    st.session_state.selected_file = uploaded_file
+            if summary_key not in st.session_state:
+                summary = summarize_paper(file.name, full_text)
+                st.session_state[summary_key] = summary
+            else:
+                summary = st.session_state[summary_key]
 
-if "selected_file" in st.session_state:
-    selected_file = st.session_state.selected_file
-    selected_file.seek(0)
-    doc = parse_uploaded_pdf(selected_file)
-    full_text = doc.sections.get("Full Paper", "")
+            summaries[file.name] = summary
+            st.success(f"Summary for {file.name}:")
+            st.write(summary)
+            log_event(display_name, "Summary", file.name)
+        except Exception as e:
+            st.error(f"Error summarizing {file.name}: {e}")
+            log_error(display_name, f"Summarize {file.name}", str(e))
 
-    # Show summary once and cache it
-    if "full_summary" not in st.session_state:
-        with st.spinner("Summarizing full paper..."):
-            prompt = f"""
-            You are an AI assistant. Summarize this research paper in plain English. Focus on key methods, results, and conclusions:
-            
-            {full_text[:10000]}
-            """
-            summary = call_claude(prompt)
-            st.session_state.full_summary = summary
+    if len(summaries) > 1:
+        st.markdown("---")
+        if st.button("Compare All Summaries"):
+            try:
+                comparison = compare_summaries(summaries)
+                st.subheader("🧠 Comparison Summary")
+                st.write(comparison)
+                log_event(display_name, "Comparison", f"{len(summaries)} papers")
+            except Exception as e:
+                st.error("Comparison failed.")
+                log_error(display_name, "Comparison", str(e))
 
-    st.subheader("Summary")
-    st.success(st.session_state.full_summary)
+    st.markdown("---")
+    st.subheader("📑 Section-Based Summarization")
+    selected_file = st.selectbox(
+        "Select a file", uploaded_files, format_func=lambda f: f.name, key="section_file"
+    )
 
-    # Section-based summarization
-    st.header("Section-Based Summarization")
-    section_list = list(doc.sections.keys())
-    if section_list:
-        st.info(f"{len(section_list)} sections detected.")
-        selected_section = st.selectbox("Choose a section", section_list)
-        if selected_section and st.button("Summarize Section"):
-            section_text = doc.sections[selected_section][:5000]
-            prompt = f"""You are an AI assistant. Summarize the '{selected_section}' section of this research paper in plain English:
-
-            {section_text}"""
-            section_summary = call_claude(prompt)
-            st.subheader(f"Summary of {selected_section}")
-            st.write(section_summary)
-    else:
-        st.warning("No sections found.")
-
-    # Hybrid Q&A (Memory + Semantic)
-    st.header("\U0001F9E0 Ask Questions (Hybrid: Memory + Semantic)")
-    qa_text = st.text_input("Ask a question about the uploaded paper:")
-    if st.button("Ask"):
+    if selected_file:
         try:
             selected_file.seek(0)
-            doc = parse_uploaded_pdf(selected_file)
-            full_text = doc.sections.get("Full Paper", "")
-            chunks = split_into_chunks(full_text)
-
-            best_chunk = find_relevant_chunk(chunks, qa_text)
-            if not best_chunk:
-                best_chunk = st.session_state.get("full_summary", full_text[:4000])
-
-            answer = ask_question_with_memory(full_text, qa_text, context_chunk=best_chunk)
-            add_to_qa_memory(qa_text, answer)
-
-            st.success("Answer:")
-            st.write(answer)
-            log_event(display_name, "Hybrid Q&A", qa_text)
-
+            selected_doc = parse_uploaded_pdf(selected_file)
+            sections = selected_doc.sections
+            st.info(f"{len(sections)} sections detected.")
+            selected_section = st.selectbox(
+                "Choose a section", list(sections.keys()), key="section_select"
+            )
+            if st.button("Summarize Section"):
+                prompt = f"Summarize the '{selected_section}' section:\n\n{sections[selected_section][:4000]}"
+                summary = call_claude(prompt)
+                st.success(f"Summary of {selected_section}:")
+                st.write(summary)
+                log_event(display_name, "Section Summary", selected_section)
         except Exception as e:
-            st.error("Q&A failed.")
-            log_error(display_name, "Hybrid Q&A", str(e))
+            st.error("Error during section summarization.")
+            log_error(display_name, "Section Summarization", str(e))
 
-    # Multi-document comparison
-    st.header("\U0001F4DD Compare Multiple Papers")
-    comparison_files = st.file_uploader("Upload multiple PDFs", type="pdf", accept_multiple_files=True)
-    if comparison_files and st.button("Compare Summaries"):
-        try:
-            docs = [parse_uploaded_pdf(f) for f in comparison_files]
-            summaries = [summarize_paper(d, call_claude) for d in docs]
-            result = compare_summaries(summaries, call_claude)
-            st.subheader("Comparative Summary")
-            st.write(result)
-            log_event(display_name, "Comparison", str([f.name for f in comparison_files]))
-        except Exception as e:
-            st.error("Comparison failed.")
-            log_error(display_name, "Comparison", str(e))
+st.markdown("---")
+st.subheader("🧠 Ask Questions")
+qa_text = st.text_input("Ask a question about the uploaded paper:")
+if st.button("Ask"):
+    try:
+        if not selected_file:
+            raise ValueError("No file selected.")
 
-    # Admin logs
-    if st.checkbox("Show Admin Logs"):
-        show_admin_logs()
-else:
-    st.info("Upload a research paper to begin.")
+        selected_file.seek(0)
+        doc = parse_uploaded_pdf(selected_file)
+
+        # Prefer full paper; fallback to all sections
+        full_text = doc.sections.get("Full Paper")
+        if not full_text:
+            full_text = "\n\n".join([f"{k}:\n{v}" for k, v in doc.sections.items()])
+
+        if not full_text.strip():
+            raise ValueError("Full paper text is empty or not found.")
+
+        answer = ask_question_with_memory(full_text, qa_text)
+        add_to_qa_memory(qa_text, answer)
+
+        st.success("Answer:")
+        st.write(answer)
+        log_event(display_name, "Hybrid Q&A", qa_text)
+
+    except Exception as e:
+        st.error(f"Q&A failed: {str(e)}")
+        log_error(display_name, "Hybrid Q&A", str(e))
+
+
+# Admin Tools
+st.sidebar.markdown("⚙️ Admin Tools")
+if st.sidebar.checkbox("View Logs"):
+    if "admin_authenticated" not in st.session_state:
+        st.session_state["admin_authenticated"] = False
+
+    if not st.session_state["admin_authenticated"]:
+        admin_pass = st.sidebar.text_input("Enter Admin Password", type="password")
+        if st.sidebar.button("Authenticate"):
+            if admin_pass == st.secrets.get("ADMIN_PASSWORD", ""):
+                st.session_state["admin_authenticated"] = True
+                st.sidebar.success("Access granted.")
+            else:
+                st.sidebar.error("Incorrect password.")
+    else:
+        show_admin_logs(st.session_state.get("username", "guest"))
