@@ -1,4 +1,4 @@
-# 📝 Technical Report
+# Technical Report
 
 ## Project Title: Research Paper Summarization Tool Using Amazon Bedrock and Streamlit
 
