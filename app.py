@@ -4,9 +4,9 @@ from app.pdf_parser import parse_uploaded_pdf
 from app.bedrock_client import call_claude
 from app.monitoring import log_event, log_error
 from app.comparison import summarize_paper, compare_summaries
+from app.qna import find_relevant_chunk, split_into_chunks
 from app.qna import init_qa_memory, ask_question_with_memory, add_to_qa_memory
 from app.table_extractor import extract_table_and_figure_text, summarize_figures_and_tables
-from app.semantic_search import ask_question_by_chunk
 from app.admin_logs import show_admin_logs
 
 login()
@@ -82,41 +82,26 @@ if uploaded_files:
             st.error("Figure/table summarization failed.")
             log_error(display_name, "Figures/Tables", e)
 
-# Q&A with memory
+# 🔁 Hybrid Q&A (Semantic Search + Memory)
 st.markdown("---")
-st.subheader("❓ Ask Questions (with Memory)")
+st.subheader("🧠 Ask Questions (Hybrid: Memory + Semantic)")
 init_qa_memory()
-qa_text = st.text_input("Ask a question about the uploaded papers:")
-if st.button("Ask with memory") and qa_text:
+qa_text = st.text_input("Ask a question about the uploaded paper:")
+if st.button("Ask"):
     try:
-        joined_text = ""
-        for f in uploaded_files:
-            f.seek(0)
-            joined_text += parse_uploaded_pdf(f).sections.get("Full Paper", "")
-        answer = ask_question_with_memory(joined_text, qa_text)
+        selected_file.seek(0)
+        doc = parse_uploaded_pdf(selected_file)
+        full_text = doc.sections.get("Full Paper", "")
+        chunks = split_into_chunks(full_text)
+        best_chunk = find_relevant_chunk(chunks, qa_text)
+        answer = ask_question_with_memory(full_text, qa_text, context_chunk=best_chunk)
         add_to_qa_memory(qa_text, answer)
         st.success("Answer:")
         st.write(answer)
-        log_event(display_name, "Q&A Memory", qa_text)
+        log_event(display_name, "Hybrid Q&A", qa_text)
     except Exception as e:
         st.error("Q&A failed.")
-        log_error(display_name, "Q&A Memory", e)
-
-# Semantic search Q&A
-st.markdown("---")
-st.subheader("🔍 Semantic Search Q&A")
-semantic_q = st.text_input("Ask a specific question (semantic search):")
-if st.button("Ask with semantic search") and semantic_q:
-    try:
-        selected_file.seek(0)
-        text = parse_uploaded_pdf(selected_file).sections.get("Full Paper", "")
-        answer = ask_question_by_chunk(text, semantic_q)
-        st.success("Answer:")
-        st.write(answer)
-        log_event(display_name, "Q&A Semantic", semantic_q)
-    except Exception as e:
-        st.error("Semantic search failed.")
-        log_error(display_name, "Q&A Semantic", e)
+        log_error(display_name, "Hybrid Q&A", e)
 
 # Admin log viewer
 st.sidebar.markdown("⚙️ Admin Tools")
