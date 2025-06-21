@@ -14,16 +14,15 @@ login()
 st.title("📚 Research Paper Summarizer")
 
 display_name = st.session_state.get("display_name", "User")
-
-# Upload PDFs
 uploaded_files = st.file_uploader("Upload one or more research papers (PDF)", type="pdf", accept_multiple_files=True)
 
 # Multi-document summarization + comparison
 if uploaded_files:
     summaries = {}
     for file in uploaded_files:
-        st.markdown(f"### {file.name}")
+        st.markdown(f"### 📄 {file.name}")
         try:
+            file.seek(0)
             doc = parse_uploaded_pdf(file)
             full_text = "\n".join(doc.sections.values())
             summary = summarize_paper(file.name, full_text)
@@ -40,7 +39,7 @@ if uploaded_files:
         if st.button("Compare All Summaries"):
             try:
                 comparison = compare_summaries(summaries)
-                st.subheader("Comparison Summary")
+                st.subheader("🧠 Comparison Summary")
                 st.write(comparison)
                 log_event(display_name, "Comparison", f"{len(summaries)} papers")
             except Exception as e:
@@ -50,8 +49,9 @@ if uploaded_files:
 # Section-based summarization
 if uploaded_files:
     st.markdown("---")
-    st.subheader("Section-Based Summarization")
+    st.subheader("📑 Section-Based Summarization")
     selected_file = st.selectbox("Select a file", uploaded_files, format_func=lambda f: f.name)
+    selected_file.seek(0)
     selected_doc = parse_uploaded_pdf(selected_file)
     sections = selected_doc.sections
     st.info(f"{len(sections)} sections detected.")
@@ -70,7 +70,7 @@ if uploaded_files:
 # Figure/Table summarization
 if uploaded_files:
     st.markdown("---")
-    st.subheader("Figures and Tables")
+    st.subheader("📊 Figures and Tables")
     selected_file.seek(0)
     if st.button("Summarize Figures & Tables"):
         try:
@@ -84,12 +84,15 @@ if uploaded_files:
 
 # Q&A with memory
 st.markdown("---")
-st.subheader("Ask Questions (with Memory)")
+st.subheader("❓ Ask Questions (with Memory)")
 init_qa_memory()
 qa_text = st.text_input("Ask a question about the uploaded papers:")
 if st.button("Ask with memory") and qa_text:
     try:
-        joined_text = "\n".join([parse_uploaded_pdf(f).sections.get("Full Paper", "") for f in uploaded_files])
+        joined_text = ""
+        for f in uploaded_files:
+            f.seek(0)
+            joined_text += parse_uploaded_pdf(f).sections.get("Full Paper", "")
         answer = ask_question_with_memory(joined_text, qa_text)
         add_to_qa_memory(qa_text, answer)
         st.success("Answer:")
@@ -101,10 +104,11 @@ if st.button("Ask with memory") and qa_text:
 
 # Semantic search Q&A
 st.markdown("---")
-st.subheader("Semantic Search Q&A")
+st.subheader("🔍 Semantic Search Q&A")
 semantic_q = st.text_input("Ask a specific question (semantic search):")
 if st.button("Ask with semantic search") and semantic_q:
     try:
+        selected_file.seek(0)
         text = parse_uploaded_pdf(selected_file).sections.get("Full Paper", "")
         answer = ask_question_by_chunk(text, semantic_q)
         st.success("Answer:")

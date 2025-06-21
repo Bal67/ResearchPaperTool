@@ -8,18 +8,25 @@ def init_qa_memory():
 def add_to_qa_memory(question: str, answer: str):
     st.session_state.qa_history.append({"question": question, "answer": answer})
 
-def ask_question_with_memory(paper_text: str, user_question: str) -> str:
+def ask_question_with_memory(paper_text: str, user_question: str, context_chunk: str = None) -> str:
     history = st.session_state.qa_history
 
     context_messages = [
-        {"role": "system", "content": "You are a helpful academic assistant answering questions based on a research paper."},
-        {"role": "user", "content": f"Here is the research paper:\n\n{paper_text[:20000]}"}
+        {"role": "system", "content": "You are a helpful research assistant answering questions about an academic paper."},
     ]
 
+    # Inject relevant paper content
+    if context_chunk:
+        context_messages.append({"role": "user", "content": f"Here is the relevant passage:\n\n{context_chunk}"})
+    else:
+        context_messages.append({"role": "user", "content": f"Here is the full research paper:\n\n{paper_text[:20000]}"})
+
+    # Add memory history
     for entry in history:
         context_messages.append({"role": "user", "content": entry["question"]})
         context_messages.append({"role": "assistant", "content": entry["answer"]})
 
+    # Current question
     context_messages.append({"role": "user", "content": user_question})
 
     prompt = {
