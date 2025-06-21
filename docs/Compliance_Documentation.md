@@ -1,4 +1,4 @@
-# ✅ Compliance Documentation
+# Compliance Documentation
 
 ## Project Name: Research Paper Summarization Tool
 
