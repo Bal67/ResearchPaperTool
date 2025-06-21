@@ -44,3 +44,20 @@
 2025-06-20 21:20:27,621 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
 2025-06-20 21:20:33,118 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
 2025-06-20 21:20:36,646 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:29:19,776 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:29:29,175 | ERROR | User: Jill | Error in: Hybrid Q&A | Exception: name 'selected_file' is not defined
+2025-06-20 21:29:33,305 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:29:35,917 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:29:36,628 | ERROR | User: Jill | Error in: Hybrid Q&A | Exception: An error occurred (ValidationException) when calling the InvokeModel operation: Malformed input request: #: subject must not be valid against schema {"required":["messages"]}#/messages/0/role: system is not a valid enum value, please reformat your input and try again.
+2025-06-20 21:30:59,396 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:31:04,250 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:31:04,725 | ERROR | User: Jill | Error in: Hybrid Q&A | Exception: An error occurred (ValidationException) when calling the InvokeModel operation: Malformed input request: #: subject must not be valid against schema {"required":["messages"]}#/messages/0/role: system is not a valid enum value, please reformat your input and try again.
+2025-06-20 21:31:07,440 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:31:10,453 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:31:10,884 | ERROR | User: Jill | Error in: Hybrid Q&A | Exception: An error occurred (ValidationException) when calling the InvokeModel operation: Malformed input request: #: subject must not be valid against schema {"required":["messages"]}#/messages/0/role: system is not a valid enum value, please reformat your input and try again.
+2025-06-20 21:31:19,903 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:31:24,108 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:31:24,555 | ERROR | User: Jill | Error in: Hybrid Q&A | Exception: An error occurred (ValidationException) when calling the InvokeModel operation: Malformed input request: #: subject must not be valid against schema {"required":["messages"]}#/messages/0/role: system is not a valid enum value, please reformat your input and try again.
+2025-06-20 21:31:37,751 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:31:39,649 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:31:40,127 | ERROR | User: Jill | Error in: Hybrid Q&A | Exception: An error occurred (ValidationException) when calling the InvokeModel operation: Malformed input request: #: subject must not be valid against schema {"required":["messages"]}#/messages/0/role: system is not a valid enum value, please reformat your input and try again.
