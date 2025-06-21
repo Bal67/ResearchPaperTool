@@ -73,20 +73,6 @@ if uploaded_files:
             st.error("Error during section summarization.")
             log_error(display_name, "Section Summarization", e)
 
-# Figure/Table summarization
-if uploaded_files:
-    st.markdown("---")
-    st.subheader("📊 Figures and Tables")
-    selected_file.seek(0)
-    if st.button("Summarize Figures & Tables"):
-        try:
-            figure_texts = extract_table_and_figure_text(selected_file)
-            summary = summarize_figures_and_tables(figure_texts)
-            st.write(summary)
-            log_event(display_name, "Figure/Table Summary", selected_file.name)
-        except Exception as e:
-            st.error("Figure/table summarization failed.")
-            log_error(display_name, "Figures/Tables", e)
 
 # 🔁 Hybrid Q&A (Semantic Search + Memory)
 st.markdown("---")
