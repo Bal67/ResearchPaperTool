@@ -1,32 +1,61 @@
 import fitz  # PyMuPDF
 import re
+from difflib import get_close_matches
 
-def parse_uploaded_pdf(uploaded_file):
-    doc = fitz.open(stream=uploaded_file.read(), filetype="pdf")
-    full_text = ""
-    for page in doc:
-        full_text += page.get_text()
+KNOWN_HEADERS = [
+    "abstract", "introduction", "background", "related work", "methods",
+    "methodology", "materials", "results", "experiments", "discussion",
+    "conclusion", "references", "acknowledgements"
+]
 
-    return extract_sections(full_text)
+def extract_text_from_pdf(uploaded_file) -> str:
+    with fitz.open(stream=uploaded_file.read(), filetype="pdf") as doc:
+        text = ""
+        for page in doc:
+            text += page.get_text()
+        return text.strip()
 
+def normalize_line(line: str) -> str:
+    line = re.sub(r"[^a-zA-Z ]", "", line.lower()).strip()
+    return line
 
-def extract_sections(text):
+def match_header(line: str) -> str:
+    norm = normalize_line(line)
+    matches = get_close_matches(norm, KNOWN_HEADERS, n=1, cutoff=0.7)
+    return matches[0] if matches else None
+
+def extract_sections(text: str) -> dict:
+    lines = text.split("\n")
     sections = {}
+    current_section = None
+    buffer = []
 
-    # Regex pattern: uppercase headings on their own line (e.g., ABSTRACT, INTRODUCTION)
-    pattern = re.compile(r"\n([A-Z][A-Z\s]{3,40})\n")
+    for line in lines:
+        line_clean = line.strip()
+        matched = match_header(line_clean)
+        if matched:
+            if current_section and buffer:
+                sections[current_section] = "\n".join(buffer).strip()
+                buffer = []
+            current_section = matched
+        elif current_section:
+            buffer.append(line)
 
-    parts = pattern.split(text)
+    if current_section and buffer:
+        sections[current_section] = "\n".join(buffer).strip()
 
-    if len(parts) < 3:
-        return type("ParsedPDF", (), {"sections": {"Full Paper": text}})()
+    return sections
 
-    # Assemble sections
-    for i in range(1, len(parts) - 1, 2):
-        header = parts[i].strip().title()  
-        content = parts[i + 1].strip()
+class ParsedPDF:
+    def __init__(self, text: str, sections: dict):
+        self.text = text
+        self.sections = sections
 
-        if len(content) > 100:
-            sections[header] = content
+def parse_uploaded_pdf(uploaded_file) -> ParsedPDF:
+    raw_text = extract_text_from_pdf(uploaded_file)
+    sections = extract_sections(raw_text)
 
-    return type("ParsedPDF", (), {"sections": sections})()
+    if not sections:
+        sections = {"Full Paper": raw_text}
+
+    return ParsedPDF(text=raw_text, sections=sections)

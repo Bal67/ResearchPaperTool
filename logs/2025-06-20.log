@@ -7,3 +7,21 @@
 2025-06-20 20:25:39,063 | INFO | Found credentials in shared credentials file: ~/.aws/credentials
 2025-06-20 20:25:54,874 | INFO | User: Britt | Action: Summary | Meta: FULLTEXT01.pdf
 2025-06-20 20:26:22,819 | INFO | User: Britt | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 20:33:29,963 | INFO | Found credentials in shared credentials file: ~/.aws/credentials
+2025-06-20 20:33:47,331 | INFO | User: Britt | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 20:34:07,391 | INFO | User: Britt | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 20:34:17,213 | INFO | User: Britt | Action: Section Summary | Meta: Aida
+2025-06-20 20:34:47,635 | INFO | User: Britt | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 20:34:48,490 | ERROR | User: Britt | Error in: Hybrid Q&A | Exception: An error occurred (ValidationException) when calling the InvokeModel operation: Malformed input request: #: subject must not be valid against schema {"required":["messages"]}#/messages/0/role: system is not a valid enum value, please reformat your input and try again.
+2025-06-20 20:35:08,424 | INFO | User: Britt | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 20:35:26,138 | INFO | User: Britt | Action: Figure/Table Summary | Meta: FULLTEXT01.pdf
+2025-06-20 20:35:59,316 | INFO | User: Britt | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 21:08:17,883 | INFO | User: Britt | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 21:09:01,201 | INFO | Found credentials in shared credentials file: ~/.aws/credentials
+2025-06-20 21:09:20,340 | INFO | User: Tom | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 21:09:34,082 | INFO | User: Tom | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 21:09:34,696 | ERROR | User: Tom | Error in: Hybrid Q&A | Exception: An error occurred (ValidationException) when calling the InvokeModel operation: Malformed input request: #: subject must not be valid against schema {"required":["messages"]}#/messages/0/role: system is not a valid enum value, please reformat your input and try again.
+2025-06-20 21:11:12,616 | INFO | User: Tom | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 21:11:18,884 | INFO | User: Tom | Action: Summary | Meta: FULLTEXT01.pdf
+2025-06-20 21:11:27,988 | INFO | User: Tom | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf
+2025-06-20 21:12:27,470 | INFO | User: Jill | Action: Summary | Meta: 146fbd39-e315-4db2-9543-6093f6cbea07.pdf

@@ -20,12 +20,18 @@ uploaded_files = st.file_uploader("Upload one or more research papers (PDF)", ty
 if uploaded_files:
     summaries = {}
     for file in uploaded_files:
-        st.markdown(f"### 📄 {file.name}")
         try:
             file.seek(0)
             doc = parse_uploaded_pdf(file)
             full_text = "\n".join(doc.sections.values())
-            summary = summarize_paper(file.name, full_text)
+            summary_key = f"summary_{file.name}"
+
+            if summary_key not in st.session_state:
+                summary = summarize_paper(file.name, full_text)
+                st.session_state[summary_key] = summary
+            else:
+                summary = st.session_state[summary_key]
+
             summaries[file.name] = summary
             st.success("Summary:")
             st.write(summary)
